@@ -16,7 +16,6 @@ public void draw()
   for(int i = 0; i < hi.length; i++)
     hi[i].show();
   falcon.move();
-  falcon.accelerate(0.1);
   falcon.show();
 }
 
@@ -29,12 +28,17 @@ public void keyPressed(){
     falcon.setDirection(Math.random()*360);
   }
   if(key == 'a')
-    falcon.getYspeed();
+    falcon.turn(-5);
+  if(key == 'd')
+    falcon.turn(5);
+  if(key == 'w')
+    falcon.accelerate(1); 
 }
 
 public void mousePressed(){
   for(int i = 0; i < hi.length; i++){
     hi[i].setX((int)(Math.random()*500));
     hi[i].setY((int)(Math.random()*500));
+    hi[i].setColor((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
   }
 }
