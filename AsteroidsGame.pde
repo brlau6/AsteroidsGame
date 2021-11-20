@@ -32,7 +32,9 @@ public void keyPressed(){
   if(key == 'd' || key == 'D')
     falcon.turn(5);
   if(key == 'w' || key == 'W')
-    falcon.accelerate(1); 
+    falcon.accelerate(1);
+  if(key == 's' || key == 'S')
+    falcon.accelerate(-1);
 }
 
 public void mousePressed(){
