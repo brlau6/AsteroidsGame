@@ -29,5 +29,11 @@ class Spaceship extends Floater
   public void setColor(int r, int g, int b){
     myColor = color(r,g,b);
   }
-  
+  //getters
+  public double getX(){
+    return myCenterX;
+  }
+  public double getY(){
+    return myCenterY;
+  }
 }
