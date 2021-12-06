@@ -15,7 +15,7 @@ class Asteroid extends Floater{
     turnSpeed = Math.random()*5-2;
   }
   public void move (){      
-    turn(turnSpeed);//rotate Asteroid
+    super.turn(turnSpeed);//rotate Asteroid
     super.move();
   }
   public double getX(){
