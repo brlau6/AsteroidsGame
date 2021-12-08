@@ -3,6 +3,8 @@ Star[] hi = new Star[300];
 Spaceship falcon = new Spaceship();
 //Spaceship[] fleet = new Spaceship[20];
 ArrayList <Asteroid> rocks = new ArrayList <Asteroid>();
+Bullet shot = new Bullet(falcon);//single bullet
+ArrayList <Bullet> ammo = new ArrayList <Bullet>();
 
 public void setup() 
 {
@@ -12,7 +14,7 @@ public void setup()
     hi[i] = new Star();
   //for(int i = 0; i < fleet.length; i++)
   //  fleet[i] = new Spaceship();
-  for(int i = 0; i < 40; i++)// 20 = # of Asteroids
+  for(int i = 0; i < 20; i++)// 20 = # of Asteroids
     rocks.add(new Asteroid());
 }
 public void draw() 
@@ -24,8 +26,12 @@ public void draw()
     for(int i = 0; i < hi.length; i++)
       hi[i].show();
   }
+  //ship
   falcon.move();
   falcon.show();
+  //bullet
+  //shot.move();
+  //shot.show();
   //for(int i = 0; i < fleet.length; i++){
   //  fleet[i].move();
   //  fleet[i].show();
@@ -35,6 +41,16 @@ public void draw()
     rocks.get(i).show();
     if((dist((float)rocks.get(i).getX(), (float)rocks.get(i).getY(), (float)falcon.getX(), (float)falcon.getY())) <= 20)
       rocks.remove(i);
+  }
+  //ADD TO MOVE FUNCTION
+  for(int i = 0; i < ammo.size(); i++){//remove bullets if they exit screen  
+    if(ammo.get(i).getX() < 0 || ammo.get(i).getX() > 500 || ammo.get(i).getY() < 0 || ammo.get(i).getY() > 500){
+      ammo.remove(i);
+    }
+  }
+  for(int i = 0; i < ammo.size(); i++){
+    ammo.get(i).show();
+    ammo.get(i).move();
   }
   if(rocks.size() == 0){//win screen
     fill(255);
@@ -50,17 +66,16 @@ public void keyPressed(){
     falcon.setXspeed(0);
     falcon.setYspeed(0);
     falcon.setDirection(Math.random()*360);
-  }
-/*    
-    for(int i = 0; i < fleet.length; i++){
-      fleet[i].setX((Math.random()*500));
-      fleet[i].setY((Math.random()*500));
-      fleet[i].setXspeed(0);
-      fleet[i].setYspeed(0);
-      fleet[i].setDirection(Math.random()*360);
-    }
-  }
-*/
+  }  
+  //  for(int i = 0; i < fleet.length; i++){
+  //    fleet[i].setX((Math.random()*500));
+  //    fleet[i].setY((Math.random()*500));
+  //    fleet[i].setXspeed(0);
+  //    fleet[i].setYspeed(0);
+  //    fleet[i].setDirection(Math.random()*360);
+  //  }
+  //}
+
   if(key == 'a' || key == 'A'){
     falcon.turn(-5);
     //for(int i = 0; i < fleet.length; i++)
@@ -80,6 +95,9 @@ public void keyPressed(){
     falcon.accelerate(-1);
     //for(int i = 0; i < fleet.length; i++)
     //  fleet[i].accelerate(-1);
+  }
+  if(key == ' '){
+    ammo.add(new Bullet(falcon));
   }
 }
 
