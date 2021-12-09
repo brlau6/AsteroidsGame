@@ -3,8 +3,8 @@ Star[] hi = new Star[300];
 Spaceship falcon = new Spaceship();
 //Spaceship[] fleet = new Spaceship[20];
 ArrayList <Asteroid> rocks = new ArrayList <Asteroid>();
-Bullet shot = new Bullet(falcon);//single bullet
-ArrayList <Bullet> ammo = new ArrayList <Bullet>();
+//Bullet shot = new Bullet(falcon);//single bullet
+//ArrayList <Bullet> ammo = new ArrayList <Bullet>();
 
 public void setup() 
 {
@@ -42,6 +42,7 @@ public void draw()
     if((dist((float)rocks.get(i).getX(), (float)rocks.get(i).getY(), (float)falcon.getX(), (float)falcon.getY())) <= 20)
       rocks.remove(i);
   }
+  /*
   //ADD TO MOVE FUNCTION
   for(int i = 0; i < ammo.size(); i++){//remove bullets if they exit screen  
     if(ammo.get(i).getX() < 0 || ammo.get(i).getX() > 500 || ammo.get(i).getY() < 0 || ammo.get(i).getY() > 500){
@@ -52,6 +53,7 @@ public void draw()
     ammo.get(i).show();
     ammo.get(i).move();
   }
+  */
   if(rocks.size() == 0){//win screen
     fill(255);
     textSize(50);
@@ -96,9 +98,11 @@ public void keyPressed(){
     //for(int i = 0; i < fleet.length; i++)
     //  fleet[i].accelerate(-1);
   }
+  /*
   if(key == ' '){
     ammo.add(new Bullet(falcon));
   }
+  */
 }
 
 public void mousePressed(){
