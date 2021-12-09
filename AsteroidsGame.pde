@@ -4,7 +4,7 @@ Spaceship falcon = new Spaceship();
 //Spaceship[] fleet = new Spaceship[20];
 ArrayList <Asteroid> rocks = new ArrayList <Asteroid>();
 //Bullet shot = new Bullet(falcon);//single bullet
-//ArrayList <Bullet> ammo = new ArrayList <Bullet>();
+ArrayList <Bullet> ammo = new ArrayList <Bullet>();
 
 public void setup() 
 {
@@ -26,6 +26,25 @@ public void draw()
     for(int i = 0; i < hi.length; i++)
       hi[i].show();
   }
+  for(int i = 0; i < rocks.size(); i++){//Asteroid movement and collision check
+    rocks.get(i).move();
+    rocks.get(i).show();
+    if((dist((float)rocks.get(i).getX(), (float)rocks.get(i).getY(), (float)falcon.getX(), (float)falcon.getY())) <= 20)
+      rocks.remove(i);
+  }
+  for(int i = 0; i < ammo.size(); i++){//Bullets
+    ammo.get(i).show();
+    ammo.get(i).move();
+  }
+  for(int i = 0; i < ammo.size(); i++){//Bullet asteroid collision
+    for(int j = 0; j < rocks.size(); j++){
+      if(dist((float)ammo.get(i).getX(), (float)ammo.get(i).getY(), (float)rocks.get(j).getX(), (float)rocks.get(j).getY()) < 10){
+        ammo.remove(i);
+        rocks.remove(j);
+        break;
+      }
+    }
+  }
   //ship
   falcon.move();
   falcon.show();
@@ -36,24 +55,6 @@ public void draw()
   //  fleet[i].move();
   //  fleet[i].show();
   //}
-  for(int i = 0; i < rocks.size(); i++){//Asteroid movement and collision check
-    rocks.get(i).move();
-    rocks.get(i).show();
-    if((dist((float)rocks.get(i).getX(), (float)rocks.get(i).getY(), (float)falcon.getX(), (float)falcon.getY())) <= 20)
-      rocks.remove(i);
-  }
-  /*
-  //ADD TO MOVE FUNCTION
-  for(int i = 0; i < ammo.size(); i++){//remove bullets if they exit screen  
-    if(ammo.get(i).getX() < 0 || ammo.get(i).getX() > 500 || ammo.get(i).getY() < 0 || ammo.get(i).getY() > 500){
-      ammo.remove(i);
-    }
-  }
-  for(int i = 0; i < ammo.size(); i++){
-    ammo.get(i).show();
-    ammo.get(i).move();
-  }
-  */
   if(rocks.size() == 0){//win screen
     fill(255);
     textSize(50);
@@ -98,11 +99,9 @@ public void keyPressed(){
     //for(int i = 0; i < fleet.length; i++)
     //  fleet[i].accelerate(-1);
   }
-  /*
   if(key == ' '){
     ammo.add(new Bullet(falcon));
   }
-  */
 }
 
 public void mousePressed(){
