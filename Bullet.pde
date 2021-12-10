@@ -20,7 +20,7 @@ class Bullet extends Floater{
     myCenterY += myYspeed;
     for(int i = 0; i < ammo.size(); i++){//remove bullets if they exit screen  
       if(ammo.get(i).getX() < 0 || ammo.get(i).getX() > 500 || ammo.get(i).getY() < 0 || ammo.get(i).getY() > 500){
-      ammo.remove(i);
+        ammo.remove(i);
       }
     }
   }//end move()
