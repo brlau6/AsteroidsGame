@@ -20,8 +20,6 @@ public void setup()
 public void draw() 
 {
   background(0);
-  noFill();
-  strokeWeight(2);
   if(rocks.size() > 0){ //show stars while game isn't won
     for(int i = 0; i < hi.length; i++)
       hi[i].show();
