@@ -5,7 +5,7 @@ class Bullet extends Floater{
     myXspeed = falcon.getXspeed();
     myYspeed = falcon.getYspeed();
     myPointDirection = falcon.getPointDirection();
-    myColor = color(255,0,0);
+    myColor = color(0,255,0);
     accelerate(6.0);
   }
   public void show(){
