@@ -7,7 +7,8 @@ class Spaceship extends Floater
     myColor = color(255);
     myCenterX = Math.random()*500;
     myCenterY = Math.random()*500;
-    myXspeed = myYspeed = 0;
+    myXspeed = 0;
+    myYspeed = 0;
     myPointDirection = 0;//degrees
   }
   //setters
@@ -40,7 +41,7 @@ class Spaceship extends Floater
     return myXspeed;
   }
   public double getYspeed(){
-    return myCenterY;
+    return myYspeed;
   }
   public double getPointDirection(){
     return myPointDirection;
