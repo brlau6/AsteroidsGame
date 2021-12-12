@@ -8,7 +8,7 @@ ArrayList <Bullet> ammo = new ArrayList <Bullet>();
 
 public void setup() 
 {
-  size(500,500);
+  size(600,600);
   background(0);
   for(int i = 0; i < hi.length; i++)
     hi[i] = new Star();
@@ -20,11 +20,12 @@ public void setup()
 public void draw() 
 {
   background(0);
+  noStroke();
   if(rocks.size() > 0){ //show stars while game isn't won
     for(int i = 0; i < hi.length; i++)
       hi[i].show();
   }
-  for(int i = 0; i < rocks.size(); i++){//Asteroid movement and collision check
+  for(int i = 0; i < rocks.size(); i++){//Asteroid movement and collision check w/ ship
     rocks.get(i).move();
     rocks.get(i).show();
     if((dist((float)rocks.get(i).getX(), (float)rocks.get(i).getY(), (float)falcon.getX(), (float)falcon.getY())) <= 20)
@@ -33,6 +34,9 @@ public void draw()
   for(int i = 0; i < ammo.size(); i++){//Bullets
     ammo.get(i).show();
     ammo.get(i).move();
+    if(ammo.get(i).getX() < 0 || ammo.get(i).getX() > 600 || ammo.get(i).getY() < 0 || ammo.get(i).getY() > 600){
+      ammo.remove(i);
+    }
   }
   for(int i = 0; i < ammo.size(); i++){//Bullet asteroid collision
     for(int j = 0; j < rocks.size(); j++){
@@ -104,7 +108,7 @@ public void keyPressed(){
 
 public void mousePressed(){
   for(int i = 0; i < hi.length; i++){// set stars to random positions on click
-    hi[i].setX((int)(Math.random()*500));
-    hi[i].setY((int)(Math.random()*500));
+    hi[i].setX((int)(Math.random()*600));
+    hi[i].setY((int)(Math.random()*600));
   }
 }
