@@ -60,7 +60,7 @@ public void draw()
   if(rocks.size() == 0){//win screen
     fill(255);
     textSize(50);
-    text("YOU WIN!",190,285);
+    text("YOU WIN!",190,295);
   }
 }//end draw()
 
